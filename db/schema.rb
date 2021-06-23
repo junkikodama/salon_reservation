@@ -27,4 +27,14 @@ ActiveRecord::Schema.define(version: 2021_06_23_082256) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "reservations", force: :cascade do |t|
+    t.date "day", null: false
+    t.string "time", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "start_time", null: false
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
 end
