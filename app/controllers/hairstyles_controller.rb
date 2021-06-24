@@ -24,9 +24,6 @@ class HairstylesController < ApplicationController
   end
 
   def edit
-    unless @hairstyle.user_id == current_user.id
-      redirect_to action: :index
-    end
   end
 
   def update
