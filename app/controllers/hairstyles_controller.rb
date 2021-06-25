@@ -47,7 +47,7 @@ class HairstylesController < ApplicationController
   end
 
   def hairstyle_params
-    params.require(:hairstyle).permit(:haitstylename, :gender_id, :hairlength_id, :haircolor_id, :detail, :image).merge(user_id: current_user.id)
+    params.require(:hairstyle).permit(:hairstylename, :gender_id, :hairlength_id, :haircolor_id, :detail, :image).merge(user_id: current_user.id)
   end
 
   def user_check
