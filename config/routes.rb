@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'hairstyles#new'
+  root 'hairstyles#index'
   resources :reservations
   resources :hairstyles
 end
