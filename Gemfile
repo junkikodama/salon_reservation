@@ -63,3 +63,6 @@ gem 'devise-i18n'
 gem 'devise-bootstrap-views', '~> 1.0'
 
 gem "simple_calendar", "~> 2.0"
+
+gem 'mini_magick'
+gem 'image_processing', '~> 1.2'
