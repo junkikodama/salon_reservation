@@ -1,8 +1,14 @@
 <%= form_with model: @hairstyle, url:hairstyles_path, local: true do |f| %>
   <div class="hairstyle-box">
-    新規ヘアスタイル投稿
+    <h1>新規ヘアスタイル投稿</h1>
     <%= f.text_field :hairstylename, class:"hairstylename", placeholder:"ヘアスタイル名" %>
     <%= f.text_area :detail, class:"detail", placeholder:"ヘアスタイルについて" %>
+    <div>
+    <%= f.collection_select(:gender_id, Gender.all, :id, :name, {}, {class:"gender-select"}) %>
+    </div>
+    <div>
+    <%= f.collection_select(:hairlength_id, Hairlength.all, :id, :name, {}, {class:"hairlength-select"}) %>
+    </div>
     <%= f.collection_select(:haircolor_id, Haircolor.all, :id, :name, {}, {class:"haircolor-select"}) %>
       <div class="field">
         <%= f.label :image, "ヘアスタイル写真" %><br />

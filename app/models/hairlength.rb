@@ -1,6 +1,6 @@
 class Hairlength < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---'},
+    { id: 1, name: '髪の長さを選んで下さい'},
     { id: 2, name: 'ベリーショート'},
     { id: 3, name: 'ショート'},
     { id: 4, name: 'ショートミディアム'},

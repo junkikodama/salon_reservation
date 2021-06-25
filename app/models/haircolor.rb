@@ -1,6 +1,6 @@
 class Haircolor < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---'},
+    { id: 1, name: '髪色を選んで下さい'},
     { id: 2, name: 'ブラック'},
     { id: 3, name: 'ナチュラルブラウン'},
     { id: 4, name: 'アッシュブラウン'},

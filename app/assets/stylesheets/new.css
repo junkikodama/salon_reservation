@@ -1,0 +1,26 @@
+.article-box {
+  height:800px;
+  background-color: lightgray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.hairstylename {
+  height: 30px;
+  width: 300px;
+  margin-bottom: 20px
+}
+
+.detail {
+  height: 100px;
+  width: 300px;
+  resize:none;
+  margin-bottom: 20px;
+}
+
+.haircolor-select{
+  height: 30px;
+  width: 250px;
+}
