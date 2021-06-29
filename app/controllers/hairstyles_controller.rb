@@ -51,7 +51,7 @@ class HairstylesController < ApplicationController
   end
 
   def user_check
-    unless @item.user_id == current_user.id
+    unless @hairstyle.user_id == current_user.id
       redirect_to action: :index
     end
   end
