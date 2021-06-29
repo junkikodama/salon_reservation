@@ -1,75 +1,41 @@
-<div class="item-show">
-  <div class="item-box">
-    <h2 class="name">
-      <%= @item.name %>
+<div class="hairstyle-show">
+  <div class="hairstyle-box">
+    <h2 class="hairstylename">
+      <%= @hairstyle.hairstylename %>
     </h2>
-    <div class="item-img-content">
-      <%= image_tag @item.image ,class:"item-box-img" %>
-      <% if @item.purchase.present? %>
-      <div class="sold-out">
-        <span>Sold Out!!</span>
-      </div>
-      <% end %>
+    <div class="hairstyle-img-content">
+      <%= image_tag @hairstyle.image ,class:"hairstyle-box-img" %>
     </div>
-    <div class="item-price-box">
-      <span class="item-price">
-        ¥ <%= @item.price %>
-      </span>
-      <span class="item-postage">
-        <%= @item.charge.name %>
-      </span>
-    </div>
-
-    <% if user_signed_in? && @item.purchase.blank?%>
-      <% if current_user.id == @item.user_id %>
-        <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
+    <hr>
+    <% if user_signed_in?%>
+      <% if current_user.id == @hairstyle.user_id %>
+        <%= link_to "編集", edit_hairstyle_path, method: :get, class: "btn btn-primary btn-block" %>
         <p class="or-text">or</p>
-        <%= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+        <%= link_to "削除", hairstyle_path(@hairstyle.id), method: :delete, class:"btn btn-danger btn-block" %>
       <% else %>
-        <%= link_to "購入画面に進む", item_purchases_path(@item.id) ,class:"item-red-btn"%>
+        <%= link_to "予約画面に進む", reservations_path ,class:"btn btn-primary btn-block"%>
       <% end %>
     <% end %>
-
-    <div class="item-explain-box">
-      <span><%= @item.description %></span>
-    </div>
+    <hr>
     <table class="detail-table">
       <tbody>
         <tr>
-          <th class="detail-item">出品者</th>
-          <td class="detail-value"><%= @item.user.nickname %></td>
+          <th class="detail-hairstyle">ヘアスタイルについて</th>
+          <td class="detail-value"><%= @hairstyle.detail %></td>
         </tr>
         <tr>
-          <th class="detail-item">カテゴリー</th>
-          <td class="detail-value"><%= @item.category.name %></td>
+          <th class="detail-hairstyle">性別</th>
+          <td class="detail-value"><%= @hairstyle.gender.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">商品の状態</th>
-          <td class="detail-value"><%= @item.status.name %></td>
+          <th class="detail-hairstyle">髪の長さ</th>
+          <td class="detail-value"><%= @hairstyle.hairlength.name %></td>
         </tr>
         <tr>
-          <th class="detail-item">配送料の負担</th>
-          <td class="detail-value"><%= @item.charge.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送元の地域</th>
-          <td class="detail-value"><%= @item.prefecture.name %></td>
-        </tr>
-        <tr>
-          <th class="detail-item">発送日の目安</th>
-          <td class="detail-value"><%= @item.duration.name %></td>
+          <th class="detail-hairstyle">髪の色</th>
+          <td class="detail-value"><%= @hairstyle.haircolor.name %></td>
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
   </div>
 </div>

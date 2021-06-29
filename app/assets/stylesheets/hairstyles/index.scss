@@ -2,6 +2,10 @@
   background: pink;
 }
 
+ul {
+  list-style: none;
+}
+
 .hairstyle-contents {
   background-color: #FFF;
   display: flex;
@@ -36,7 +40,6 @@
   padding: 1vw;
   background-color: #FFF;
 }
-
 
 .hairstyle-img-content {
   position: relative;
