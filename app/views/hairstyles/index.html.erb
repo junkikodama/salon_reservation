@@ -1,13 +1,28 @@
-<main class="main">
-  <div class="inner">
-    <% if user_signed_in? %>
-      <div class="greeting">
-        <div>こんにちは、<%= link_to "#{current_user.email}さん", '#' , class: :greeting__link %></div>
-      </div>
-    <% end %>
-    <%# // ログインしているときは上記を表示する %>
-    <div class="card__wrapper">
-      <%= render partial: "hairstyle" ,collection: @hairstyles %>
+<div class='main'>
+  <div class='hairstyle-contents'>
+    <h2 class='title'>ヘアスタイル一覧</h2>
+    <div class="subtitle" >
+      最近の流行り
     </div>
+    <ul class='hairstyle-lists'>
+      <% @hairstyles.each do |hairstyle| %>
+      <li class='list'>
+        <%= link_to hairstyle_path(hairstyle.id) do %>
+        <div class='hairstyle-img-content'>
+          <%= image_tag hairstyle.image, class: "hairstyle-img" %>
+
+        </div>
+        <div class='hairstyle-info'>
+          <h3 class='hairstyle-hairstylename'>
+            <%= hairstyle.hairstylename %>
+          </h3>
+          <div class='hairstyle-detail'>
+            <%= hairstyle.detail %>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
   </div>
-</main>
+</div>

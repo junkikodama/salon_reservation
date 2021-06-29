@@ -1,9 +1,0 @@
-<div class="card">
-  <%= link_to image_tag(hairstyle.image.variant(resize: '200x200'), class: :card__img ), hairstyle_path(hairstyle.id)%>
-  <div class="card__body">
-    <%= link_to hairstyle.hairstylename, hairstyle_path(hairstyle.id), class: :card__title%>
-    <p class="card__summary">
-      <%= hairstyle.detail %>
-    </p>
-  </div>
-</div>
