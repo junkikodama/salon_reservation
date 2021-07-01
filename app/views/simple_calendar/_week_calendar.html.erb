@@ -2,9 +2,9 @@
   <div class="calendar-heading">
     <%= link_to t('simple_calendar.previous', default: '先週'), calendar.url_for_previous_view %>
     <% if calendar.number_of_weeks == 1 %>
-      <span class="calendar-title"><%= t('simple_calendar.week', default: '今週') %> <%= calendar.week_number %></span>
+      <span class="calendar-title"><%= t('simple_calendar.week', default: '今週') %></span>
     <% else %>
-      <span class="calendar-title"><%= t('simple_calendar.week', default: '今週') %> <%= calendar.week_number %> - <%= calendar.end_week %></span>
+      <span class="calendar-title"><%= t('simple_calendar.week', default: '今週') %></span>
     <% end %>
     <%= link_to t('simple_calendar.next', default: '来週'), calendar.url_for_next_view %>
     <% reservations = Reservation.reservations_after_three_month %>
@@ -13,17 +13,17 @@
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>時間</th>
+        <th>曜日</th>
         <% date_range.slice(0, 7).each do |day| %>
-          <th><%= t('date.abbr_day_names')[day.wday] %></th>
+          <th><%= t('date.abbr_day_names')[day.wday] %><%= '曜日'%></th>
         <% end %>
       </tr>
     </thead>
 
-    <tbody>
+       <tbody>
       <% date_range.each_slice(7) do |week| %>
-        <tr>
-          <td></td>
+        <%= content_tag :tr, class: calendar.tr_classes_for(week) do %>
+          <td><%= t('date.month_names')[start_date.month] %></td>
           <% week.each do |day| %>
             <%= content_tag :td, class: calendar.td_classes_for(day) do %>
               <% if defined?(Haml) && respond_to?(:block_is_haml?) && block_is_haml?(passed_block) %>
@@ -31,18 +31,19 @@
               <% else %>
                 <% passed_block.call day, sorted_events.fetch(day, []) %>
               <% end %>
+              <%= '日' %>
             <% end %>
           <% end %>
-        </tr>
-         <% times.each do |time| %>
+        <% end %>
+        <% times.each do |time| %>
           <tr>
             <td><%= time %></td>
             <% week.each do |day| %>
               <td>
-              <% if check_reservation(reservations, day, time) %>
+                <% if check_reservation(reservations, day, time) %>
                   <%= '×' %>
                 <% else %>
-               <%= link_to new_reservation_path(day: day, time: time) do %>
+                  <%= link_to new_reservation_path(day: day, time: time) do %>
                     <%= '○' %>
                   <% end %>
                 <% end %>
@@ -52,5 +53,6 @@
         <% end %>
       <% end %>
     </tbody>
+
   </table>
 </div>
