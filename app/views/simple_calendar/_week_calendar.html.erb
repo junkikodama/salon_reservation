@@ -42,6 +42,8 @@
               <td>
                 <% if check_reservation(reservations, day, time) %>
                   <%= '×' %>
+                <% elsif day < Date.current || (day < Date.current + 1 && time <= Time.current.strftime("%H:%M")) %>
+                  <%= '※' %>
                 <% else %>
                   <%= link_to new_reservation_path(day: day, time: time) do %>
                     <%= '○' %>
