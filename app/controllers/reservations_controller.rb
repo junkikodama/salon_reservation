@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new
     @day = params[:day]
     @time = params[:time]
-    @start_time = DateTime.parse(@day + " " + @time + " " + "JST")
+    @start_time = DateTime.parse(@day + " " + @time)
     message = Reservation.check_reservation_day(@day.to_date)
     if !!message
       redirect_to @reservation, flash: { alert: message }
@@ -22,6 +22,7 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
+      
       redirect_to reservation_path @reservation.id
     else
       render :new
