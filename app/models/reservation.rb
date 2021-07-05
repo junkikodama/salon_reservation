@@ -1,9 +1,16 @@
 class Reservation < ApplicationRecord
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :menu
   belongs_to :user
 
   validates :day, presence: true
   validates :time, presence: true
   validates :start_time, presence: true, uniqueness: true
+
+  with_options numericality: { other_than: 1 } do
+    validates :menu_id
+  end
 
   validate :date_before_start
   validate :date_current_today
