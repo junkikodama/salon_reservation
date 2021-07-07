@@ -13,9 +13,13 @@
  *= require_tree .
  *= require_self
  *= require simple_calendar
+ *= require style.css
  */
 
 @import "bootstrap/scss/bootstrap";
+@import "style.css";
+
+
 
 .alert-notice {
   @extend .alert-info;
