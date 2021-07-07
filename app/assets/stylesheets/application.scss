@@ -13,16 +13,13 @@
  *= require_tree .
  *= require_self
  *= require simple_calendar
+ *= require style.css
  */
 
 @import "bootstrap/scss/bootstrap";
+@import "style.css";
 
-.mw-md {
-  max-width: 576px;
-}
-.mw-xl {
-  max-width: 1200px;
-}
+
 
 .alert-notice {
   @extend .alert-info;
