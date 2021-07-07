@@ -3,29 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
-<title>ホームページサンプル株式会社のサイトです</title>
+<title>美容室予約</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <link rel="stylesheet" href="style.css" type="text/css" media="screen">
 <!--[if lt IE 9]>
-<script src="js/html5.js"></script>
-<script src="js/css3-mediaqueries.js"></script>
+<script src="javascript/html5.js"></script>
+<script src="javascript/css3-mediaqueries.js"></script>
 <![endif]-->
-<script src="js/jquery1.7.2.min.js"></script>
-<script src="js/script.js"></script>
+<script src="javascript/jquery1.7.2.min.js"></script>
+<script src="javascript/script.js"></script>
 </head>
 
 <body>
 <header id="header">
   <!-- ロゴ -->
 	<div class="logo">
-		<a href="index.html"><img src="/assets/logo.png" width="45" height="45" alt="Sample site" /><p>Company Name<span>Your Company Slogan</span></p></a>
+		<a href="/"><img src="/assets/logo.png" width="45" height="45" alt="Sample site" /><p>Salon Reservation<span>Beauty makes life better</span></p></a>
 	</div>
 	<!-- / ロゴ -->
 	<!-- 電話番号+受付時間 -->
 	<div class="info">
-		<p class="tel"><span>電話:</span> 012-3456-7890</p>
-		<p class="open">受付時間: 平日 AM 10:00 〜 PM 5:00</p>
+		<p class="tel"><span>電話:</span> 0123-456-7890</p>
+		<p class="open">受付時間: 全日 AM 10:00 〜 PM 8:00</p>
 	</div>
 	<!-- / 電話番号+受付時間 -->
 </header>
@@ -36,11 +36,18 @@
   	<a class="menu" id="menu"><span>MENU</span></a>
 		<div class="panel">   
     	<ul>
-    		<li class="active"><a href="index.html"><strong>トップページ</strong><span>Top</span></a></li>
-				<li><a href="subpage.html"><strong>ごあいさつ</strong><span>Greeting</span></a></li>
-				<li><a href="subpage.html"><strong>サービス概要</strong><span>Service</span></a></li>
-				<li><a href="subpage.html"><strong>弊社の取り組み</strong><span>Approach</span></a></li>
-				<li class="last"><a href="subpage.html"><strong>お問い合わせ</strong><span>Contact</span></a></li>
+				<% if user_signed_in? %>
+					<li class="active"><a href= "/"><strong>トップページ</strong><span>Top</span></a></li>
+					<li><a href="/reservations"><strong>美容室予約</strong><span>Reservation</span></a></li>
+					<li><a href="/hairstyles"><strong>ヘアスタイル</strong><span>Hairstyle</span></a></li>
+					<li><a href="#"><strong>マイページ</strong><span>Mypage</span></a></li>
+					<li><a href="/users/edit"><strong>アカウント編集</strong><span>Account</span></a></li>
+					<li class="last"><a href="/users/sign_out" data-method="delete"><strong>ログアウト</strong><span>Logout</span></a></li>
+				<% else %>
+					<li class="active"><a href= "/"><strong>トップページ</strong><span>Top</span></a></li>
+					<li><a href="/hairstyles"><strong>ヘアスタイル</strong><span>Hairstyle</span></a></li>
+					<li class="last"><a href="/users/sign_in"><strong>ログイン</strong><span>Login</span></a></li>
+				<% end %>
 			</ul>   
     </div>
 	</div> 
@@ -51,7 +58,7 @@
   
   <!-- メイン画像 -->
 	<div id="mainBanner">
-		<img src="/assets/mainImg.jpg" alt="">
+		<img src="/assets/美容室.jpg" width="930" alt="美容室店内写真">
 	</div>
 	<!-- / メイン画像 -->
 
